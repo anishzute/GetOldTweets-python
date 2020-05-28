@@ -19,6 +19,13 @@ class TweetManager:
 		active = True
 
 		while active:
+			if counter % 10000 == 0:
+				print("Waiting 2 minutes to avoid request quota.")
+				from progressbar import ProgressBar
+				pbar = ProgressBar()
+				import time
+				for i in pbar(range(60*2)):
+					time.sleep(1)
 			json = TweetManager.getJsonReponse(tweetCriteria, refreshCursor, cookieJar, proxy)
 			if not(json == 'error json'):
 				try:
@@ -161,7 +168,7 @@ class TweetManager:
 			      time.sleep(1)
 			print('Trying Again')
 			return TweetManager.getJsonReponse(tc, rc, cj, p)
-			break
+# 			break
 		
 		dataJson = json.loads(jsonResponse.decode())
 		
