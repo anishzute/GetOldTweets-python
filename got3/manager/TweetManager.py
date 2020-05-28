@@ -103,6 +103,10 @@ class TweetManager:
 	
 	@staticmethod
 	def getJsonReponse(tweetCriteria, refreshCursor, cookieJar, proxy):
+		tc = tweetCriteria
+		rc = refreshCursor
+		cj = cookieJar
+		p = proxy
 		url = "https://twitter.com/i/search/timeline?f=tweets&q=%s&src=typd&%smax_position=%s"
 		
 		urlGetData = ''
@@ -156,7 +160,8 @@ class TweetManager:
 			for i in pbar(range(60)):
 			      time.sleep(1)
 			print('Trying Again')
-			return TweetManager.getJsonReponse(tweetCriteria, refreshCursor, cookieJar, proxy)
+			return TweetManager.getJsonReponse(tc, rc, cj, p)
+			break
 		
 		dataJson = json.loads(jsonResponse.decode())
 		
