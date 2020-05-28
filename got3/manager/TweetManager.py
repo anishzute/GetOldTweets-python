@@ -19,11 +19,13 @@ class TweetManager:
 
 		while active:
 			json = TweetManager.getJsonReponse(tweetCriteria, refreshCursor, cookieJar, proxy)
-			try len(json['items_html'].strip()):
-				if len(json['items_html'].strip()) == 0:
-					break
+			try:
+				len(json['items_html'].strip()) == 0
 			except:
 				break
+			if len(json['items_html'].strip()) == 0:
+				break
+			
 			
 
 			refreshCursor = json['min_position']
