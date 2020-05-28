@@ -141,17 +141,22 @@ class TweetManager:
 			opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cookieJar))
 		opener.addheaders = headers
 		response = opener.open(url)
-		
+
 		try:
-# 			response = opener.open(url)
+			response = opener.open(url)
 			jsonResponse = response.read()
-		except:
+		except Exception as e:
 			#print("Twitter weird response. Try to see on browser: ", url)
 			print("Twitter weird response. Try to see on browser: https://twitter.com/search?q=%s&src=typd" % urllib.parse.quote(urlGetData))
-			print("Unexpected error:", sys.exc_info()[0])
-			print(f'Response: {response}')
-# 			sys.exit()
-			return 'error json'
+			print("Unexpected error: ", str(e), "\n")
+			print('Waiting 1 minute.)
+			from progressbar import ProgressBar
+			import time
+			pbar = ProgressBar()
+			for i in pbar(range(60)):
+			      time.sleep(1)
+			print('Trying Again')
+			return TweetManager.getJsonReponse(tweetCriteria, refreshCursor, cookieJar, proxy)
 		
 		dataJson = json.loads(jsonResponse.decode())
 		
