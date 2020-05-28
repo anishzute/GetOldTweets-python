@@ -76,6 +76,7 @@ class TweetManager:
 					tweet.geo = geo
 					tweet.urls = ",".join(urls)
 					tweet.author_id = user_id
+
 				
 					results.append(tweet)
 					resultsAux.append(tweet)
@@ -141,7 +142,8 @@ class TweetManager:
 		except:
 			#print("Twitter weird response. Try to see on browser: ", url)
 			print("Twitter weird response. Try to see on browser: https://twitter.com/search?q=%s&src=typd" % urllib.parse.quote(urlGetData))
-			print("Unexpected error:", sys.exc_info()[0])
+			print(f'Response: {response}')
+# 			print("Unexpected error:", sys.exc_info()[0])
 # 			sys.exit()
 			return 'error json'
 		
