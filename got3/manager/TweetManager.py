@@ -19,8 +19,12 @@ class TweetManager:
 
 		while active:
 			json = TweetManager.getJsonReponse(tweetCriteria, refreshCursor, cookieJar, proxy)
-			if len(json['items_html'].strip()) == 0:
+			try len(json['items_html'].strip()):
+				if len(json['items_html'].strip()) == 0:
+					break
+			except:
 				break
+			
 
 			refreshCursor = json['min_position']
 			scrapedTweets = PyQuery(json['items_html'])
