@@ -68,7 +68,7 @@ def main(argv):
 					print("Current Tweet Date: " + t.date.strftime("%Y-%m-%d"))
 # 				counter += 1
 			outputFile.flush()
-# 			print(f'{len(tweets)} more tweets saved on file... total tweets: {counter}\n')
+			print(f'{len(tweets)} more tweets saved on file...\n')
 
 		got.manager.TweetManager.getTweets(tweetCriteria, receiveBuffer)
 
