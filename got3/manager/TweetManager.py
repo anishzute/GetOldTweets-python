@@ -14,6 +14,7 @@ class TweetManager:
 		results = []
 		resultsAux = []
 		cookieJar = http.cookiejar.CookieJar()
+		counter = 0
 
 		active = True
 
@@ -40,6 +41,9 @@ class TweetManager:
 					break
 			
 				for tweetHTML in tweets:
+					counter += 1
+					if counter % 100 == 0:
+						print(f'total tweets: {counter}\n')
 					tweetPQ = PyQuery(tweetHTML)
 					tweet = models.Tweet()
 				
@@ -80,6 +84,7 @@ class TweetManager:
 				
 					results.append(tweet)
 					resultsAux.append(tweet)
+					
 					
 					if receiveBuffer and len(resultsAux) >= bufferLength:
 						receiveBuffer(resultsAux)
