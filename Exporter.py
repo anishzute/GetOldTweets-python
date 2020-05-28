@@ -5,10 +5,8 @@ if sys.version_info[0] < 3:
 else:
     import got3 as got
 
-counter = 0
-
 def main(argv):
-	counter = 0
+
 	if len(argv) == 0:
 		print('You must pass some parameters. Use \"-h\" to help.')
 		return
@@ -68,9 +66,9 @@ def main(argv):
 				outputFile.write(('\n%s;%s;%d;%d;"%s";%s;%s;%s;"%s";%s' % (t.username, t.date.strftime("%Y-%m-%d %H:%M"), t.retweets, t.favorites, t.text, t.geo, t.mentions, t.hashtags, t.id, t.permalink)))
 				if i == len(tweets)-1:
 					print("Current Tweet Date: " + t.date.strftime("%Y-%m-%d"))
-				counter += 1
+# 				counter += 1
 			outputFile.flush()
-			print(f'{len(tweets)} more tweets saved on file... total tweets: {counter}\n')
+# 			print(f'{len(tweets)} more tweets saved on file... total tweets: {counter}\n')
 
 		got.manager.TweetManager.getTweets(tweetCriteria, receiveBuffer)
 
