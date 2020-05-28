@@ -19,7 +19,7 @@ class TweetManager:
 		active = True
 
 		while active:
-			if counter % 10000 == 0:
+			if counter != 0 and counter % 10000 == 0:
 				print("Waiting 2 minutes to avoid request quota.")
 				from progressbar import ProgressBar
 				pbar = ProgressBar()
