@@ -64,7 +64,7 @@ def main(argv):
 		def receiveBuffer(tweets):
 			for i, t in enumerate(tweets):
 				outputFile.write(('\n%s;%s;%d;%d;"%s";%s;%s;%s;"%s";%s' % (t.username, t.date.strftime("%Y-%m-%d %H:%M"), t.retweets, t.favorites, t.text, t.geo, t.mentions, t.hashtags, t.id, t.permalink)))
-				if i = len(tweets)-1:
+				if i == len(tweets)-1:
 					print(t.date.strftime("%Y-%m-%d")
 			outputFile.flush()
 			print('More %d saved on file...\n' % len(tweets))
