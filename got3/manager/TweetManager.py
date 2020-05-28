@@ -152,6 +152,7 @@ class TweetManager:
 			opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cookieJar))
 		opener.addheaders = headers
 		response = opener.open(url)
+		isError = false
 
 		try:
 			response = opener.open(url)
@@ -167,9 +168,12 @@ class TweetManager:
 			for i in pbar(range(60)):
 			      time.sleep(1)
 			print('Trying Again')
-			return TweetManager.getJsonReponse(tc, rc, cj, p)
+			isError = True
+			continue
+
 # 			break
-		
-		dataJson = json.loads(jsonResponse.decode())
-		
-		return dataJson		
+		if isError:
+			return TweetManager.getJsonReponse(tc, rc, cj, p)
+		else:
+			dataJson = json.loads(jsonResponse.decode())		
+			return dataJson		
