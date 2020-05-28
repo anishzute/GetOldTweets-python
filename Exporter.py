@@ -8,7 +8,7 @@ else:
 counter = 0
 
 def main(argv):
-
+	counter = 0
 	if len(argv) == 0:
 		print('You must pass some parameters. Use \"-h\" to help.')
 		return
