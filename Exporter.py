@@ -72,8 +72,8 @@ def main(argv):
 
 		got.manager.TweetManager.getTweets(tweetCriteria, receiveBuffer)
 
-	except arg:
-		print('Arguments parser error, try -h' + arg)
+# 	except:
+# 		print('Arguments parser error, try -h' + arg)
 	finally:
 		outputFile.close()
 		print('Done. Output file generated "%s".' % outputFileName)
