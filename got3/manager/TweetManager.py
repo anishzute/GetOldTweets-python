@@ -151,7 +151,7 @@ class TweetManager:
 		else:
 			opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cookieJar))
 		opener.addheaders = headers
-		response = opener.open(url)
+# 		response = opener.open(url)
 # 		isError = false
 
 		try:
